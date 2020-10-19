@@ -1,0 +1,13 @@
+# tell docker permission is required
+sudo: required
+# tell travis to install docker
+services:
+  - docker
+
+# initial commands
+before_install:
+  - docker build -t penabrea/docker-react -f Dockerfile.dev .
+
+script:
+  # we add -- --coverage to exit the terminal from wanting input
+  - docker run penabrea/docker-react npm run test -- --coverage
