@@ -9,5 +9,5 @@ before_install:
   - docker build -t penabrea/docker-react -f Dockerfile.dev .
 
 script:
-  # we add -- --coverage to exit the terminal from wanting input
-  - docker run penabrea/docker-react npm run test -- --coverage
+  # we add -e CI=true to exit the terminal from wanting input
+  - docker run -e CI=true penabrea/docker-react npm run test
