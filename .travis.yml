@@ -11,3 +11,18 @@ before_install:
 script:
   # we add -e CI=true to exit the terminal from wanting input
   - docker run -e CI=true penabrea/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker
+  env: "Docker-env"
+  # search elasticbeanstalk-** on s3 service
+  bucket_name: "elasticbeanstalk-us-east-1-681726692303"
+  bucket_path: "docker"
+  on:
+    # deploy only when master branch is update
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
