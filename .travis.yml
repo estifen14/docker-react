@@ -15,7 +15,7 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "docker
+  app: "docker"
   env: "Docker-env"
   # search elasticbeanstalk-** on s3 service
   bucket_name: "elasticbeanstalk-us-east-1-681726692303"
